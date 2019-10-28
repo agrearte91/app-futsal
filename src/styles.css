@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container {
+    padding-top: 80px;
+}
+
+.bg {
+    background: transparent important;
+    /* background-image: url("./assets/imagen-fondo.jpg") */
+}
