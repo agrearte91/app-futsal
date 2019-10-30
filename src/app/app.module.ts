@@ -9,6 +9,7 @@ import { FairPlayComponent } from './tablas/fair-play/fair-play.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from '../app.routes';
 import { NavbarComponent } from './compartido/navbar/navbar.component';
+import { FixtureComponent } from './componentes/fixture/fixture.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './compartido/navbar/navbar.component';
     PosicionesComponent,
     GoleadoresComponent,
     FairPlayComponent,
-    NavbarComponent
+    NavbarComponent,
+    FixtureComponent
   ],
   imports: [
     BrowserModule,

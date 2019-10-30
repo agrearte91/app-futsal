@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
+  catergorias:string[] = ["A","B","C","D","E","Senior"]
 
   constructor() { }
 

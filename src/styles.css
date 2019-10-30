@@ -1,14 +1,13 @@
-nav {
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-}
-
-.container {
+.container-table {
     padding-top: 80px;
 }
 
+.imagenfondo {
+    background-image: url("/assets/imagen-fondo2.jpg");
+    background-size: 100%;
+}
+
 .bg {
-    background: transparent important;
-    /* background-image: url("./assets/imagen-fondo.jpg") */
+    background-color: aquamarine;
+    opacity: 0.5;
 }
