@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from '../app.routes';
 import { NavbarComponent } from './compartido/navbar/navbar.component';
 import { FixtureComponent } from './componentes/fixture/fixture.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
+import { ResultadosComponent } from './components/resultados/resultados.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FixtureComponent } from './componentes/fixture/fixture.component';
     GoleadoresComponent,
     FairPlayComponent,
     NavbarComponent,
-    FixtureComponent
+    FixtureComponent,
+    EstadisticasComponent,
+    ResultadosComponent
   ],
   imports: [
     BrowserModule,

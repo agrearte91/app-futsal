@@ -1,8 +1,8 @@
 <div class="row card-deck">
-    <div class="col-md-4" *ngFor="let fecha of fechas">
+    <div class="col-md-6" *ngFor="let ll of fixture;let i=index;">
         <div class="card" style="margin-top: 10px">
             <div class="card-header">
-                FECHA {{fecha}}
+                FECHA {{i+1}}
             </div>
             <div class="card-body">
 
@@ -17,52 +17,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let partido of ll.fecha">
 
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-
-                        </tr>
-                        <tr>
-
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-
-                        </tr>
-                        <tr>
-
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-
-                        </tr>
-                        <tr>
-
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-
-                        </tr>
-                        <tr>
-
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-
+                            <td>{{partido.local}}</td>
+                            <td>vs</td>
+                            <td>{{partido.visitante}}</td>
+                            <td>{{partido.detalle}}</td>
                         </tr>
                     </tbody>
                 </table>

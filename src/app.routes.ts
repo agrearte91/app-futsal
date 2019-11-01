@@ -4,12 +4,18 @@ import { GoleadoresComponent } from './app/tablas/goleadores/goleadores.componen
 import { PosicionesComponent } from './app/tablas/posiciones/posiciones.component';
 import { FairPlayComponent } from './app/tablas/fair-play/fair-play.component';
 import { FixtureComponent } from './app/componentes/fixture/fixture.component';
+import { EstadisticasComponent } from './app/components/estadisticas/estadisticas.component';
 
 
 export const ROUTES:  Routes  = [
     {path: 'posiciones', component: PosicionesComponent},
+    {path: 'posiciones/:categoria', component: PosicionesComponent},
     {path: 'goleadores', component: GoleadoresComponent},
+    {path: 'goleadores/:categoria', component: GoleadoresComponent},
     {path: 'fair-play', component: FairPlayComponent},
+    {path: 'fair-play/:categoria', component: FairPlayComponent},
     {path: 'fixture', component:FixtureComponent},
+    {path: 'fixture/:categoria', component:FixtureComponent},
+    {path: 'estadisticas/:categoria', component:EstadisticasComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'posiciones' }
 ]
