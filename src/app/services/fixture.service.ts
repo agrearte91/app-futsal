@@ -64,59 +64,87 @@ export class FixtureService {
   },
   {'fecha':[
     { 'local':'Absolut Fc',
-      'visitante':'Kawabonga',
-      'detalle':'23:20'
+      'visitante':'Los amigos de tu hermana',
+      'detalle':'----'
     },
     {
       'local':'Villa Muten',
-      'visitante':'Proyecto de Equipo',
-      'detalle':'postergado'
+      'visitante':'Manzana de Newton',
+      'detalle':'----'
     },
     {
-      'local':'Real Coholicos',
-      'visitante':'200 de Paleta',
-      'detalle':'Postergado'
+      'local':'200 de Paleta',
+      'visitante':'Kawabonga',
+      'detalle':'----'
     },
     {
       'local':"Barrileta Cosmico",
-      'visitante':'Los Amigos de tu Hna',
-      'detalle':'postergado'
+      'visitante':'Proyecto de Equipo',
+      'detalle':'----'
     },
     {
-      'local':'Absolut Fc',
-      'visitante':'Kawabonga',
-      'detalle':'20:00'
+      'local':'Brujas Fc',
+      'visitante':'Real Coholicos',
+      'detalle':'----'
     }
   ],
   "categoria":"B"
 },{'fecha':[
   { 'local':'Absolut Fc',
-    'visitante':'Kawabonga',
-    'detalle':'23:20'
+    'visitante':'Brujas Fc',
+    'detalle':'----'
   },
   {
     'local':'Villa Muten',
-    'visitante':'Proyecto de Equipo',
-    'detalle':'postergado'
+    'visitante':'Kawabonga',
+    'detalle':'----'
   },
   {
     'local':'Real Coholicos',
-    'visitante':'200 de Paleta',
-    'detalle':'Postergado'
+    'visitante':'Proyecto de Equipo',
+    'detalle':'----'
   },
   {
     'local':"Barrileta Cosmico",
-    'visitante':'Los Amigos de tu Hna',
-    'detalle':'postergado'
+    'visitante':'200 de Paleta',
+    'detalle':'----'
   },
   {
-    'local':'Absolut Fc',
-    'visitante':'Kawabonga',
-    'detalle':'20:00'
+    'local':'Manzana de Newton',
+    'visitante':'Los amigos de tu hermana',
+    'detalle':'----'
   }
 ],
 "categoria":"B"
-}
+},{'fecha':[
+  { 'local':'Absolut Fc',
+    'visitante':'Proyecto de Equipo',
+    'detalle':'----'
+  },
+  {
+    'local':'Villa Muten',
+    'visitante':'200 de Paleta',
+    'detalle':'----'
+  },
+  {
+    'local':'Real Coholicos',
+    'visitante':'Los amigos de tu hermana',
+    'detalle':'----'
+  },
+  {
+    'local':"Barrileta Cosmico",
+    'visitante':'Manzana de Newton',
+    'detalle':'----'
+  },
+  {
+    'local':'Brujas Fc',
+    'visitante':'Kawabonga',
+    'detalle':'----'
+  }
+],
+"categoria":"B"
+},
+
     ]
   constructor() {
    }
@@ -133,5 +161,17 @@ export class FixtureService {
      return fechas;
    }
 
+getProximaFecha(fechaActual:number) {
+  if (fechaActual+1 < this.fixture.length)
+    return this.fixture[fechaActual+1].fecha
 
+return 0;
+}
+
+getFechaAnterior(fechaActual:number) {
+  if (fechaActual-1 >= 0)
+    return this.fixture[fechaActual-1].fecha
+
+return 0;
+}
 }
