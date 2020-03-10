@@ -15,7 +15,7 @@ export class FechaNuevaComponent implements OnInit {
 
   //variables locales 
 
-    equipos = new Array()
+  equipos = new Array()
   equipoLocal:string
   equipoVisitante:string
   equiposDisponibles = new Array()
@@ -31,19 +31,35 @@ export class FechaNuevaComponent implements OnInit {
     let ubicacion = this.equiposDisponibles.indexOf(equipoSeleccionado)
     this.equiposDisponibles.splice(ubicacion,1);
     this.equipoLocal= equipoSeleccionado;
-    console.log(this.equiposDisponibles)
+    //console.log(this.equiposDisponibles)
   }
 
   seleccionarVisitante(equipoSeleccionado){//equipo seleccionado viene desde el componente hijo
     let ubicacion = this.equiposDisponibles.indexOf(equipoSeleccionado)
     this.equiposDisponibles.splice(ubicacion,1);
     this.equipoVisitante= equipoSeleccionado
-    console.log(this.equiposDisponibles)
+    this.equipoLocal = null
+    //console.log(this.equiposDisponibles)
   }
 
   enviarDisponibles() {
-    let aux = this.equiposDisponibles.slice(); 
+    let aux = this.equiposDisponibles;
+    //console.log("disponibles")
+    //console.log(aux)
+    //let aux= this._fixtureService.obtenerDisponibles
     return aux;
   }
-
+  
+  enviarDisponiblesVisita(){
+    let aux = new Array()
+    if(this.equipoLocal)    
+    {
+      console.log(this.equipoLocal, this.equiposDisponibles)
+      aux = this._fixtureService.obtenerDisponibles(this.equipoLocal,this.equiposDisponibles);
+      console.log("disponible visita", aux)}
+    else{
+     aux = this.equiposDisponibles;
+    }
+    return aux;
+  }
 }

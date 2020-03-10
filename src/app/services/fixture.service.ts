@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ArrayType } from '@angular/compiler';
+import { element } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,10 @@ export class FixtureService {
     } 
   ]
 
-  //estructura auxiar para el armado del fixture de una categoria
+  //estructuras auxiares para el armado del fixture de una categoria
 
   private partidosArmados = new Array();
-
+  private posiblesVisitantes= new Array();
 
   private fixture: any[] = [
       {'fecha':[
@@ -213,10 +214,11 @@ guardarPartido(local: string, visitante: string){
 }
 //solo se utiliza para fechas posteriores a la fecha 1
 //se arma una nueva lista de dispobles para un equipo teniendo en cuenta la fecha actual y las ateriores
-obtenerDisponibles(equipo:string, candidatos:any[]){
+obtenerDisponibles(equipo:string, candidatos:string[]){
   let partidosAnteriores = new Array()
-  let nuevosCandidatos= candidatos.slice();
+  let nuevosCandidatos= candidatos.slice()
   let cantidadPartidos= this.partidosArmados.length;
+  console.log("cantidad de partidos",cantidadPartidos)
   for(let i=0; i<cantidadPartidos; i++ ){
   
     if (this.partidosArmados[i].local == equipo){
@@ -226,11 +228,14 @@ obtenerDisponibles(equipo:string, candidatos:any[]){
       partidosAnteriores.push(this.partidosArmados[i].local)
     }
   }
- 
+  console.log("partidos anteriores",partidosAnteriores)
   //elimino de la lista de candidatos a todos los equipos que estan en partidosAteriores
   for(let i = 0; i < partidosAnteriores.length ;i++){
-    let ubicacion = nuevosCandidatos.indexOf(partidosAnteriores[i]);
-    nuevosCandidatos.splice(ubicacion,1);
+    console.log(partidosAnteriores[i])
+    let ubicacion = nuevosCandidatos.findIndex((element) => element == partidosAnteriores[i]);
+    console.log(ubicacion)
+    if(ubicacion!= -1 )
+      nuevosCandidatos.splice(ubicacion,1);
   }
   return nuevosCandidatos;
 

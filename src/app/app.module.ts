@@ -14,6 +14,7 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
 import { NuevoFixtureComponent } from './components/administracion/nuevo-fixture/nuevo-fixture.component';
 import { PartidoComponent } from './components/administracion/partido/partido.component';
 import { FechaNuevaComponent } from './components/administracion/fecha-nueva/fecha-nueva.component';
+import { PlanillaInscripcionComponent } from './components/planilla-inscripcion/planilla-inscripcion.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FechaNuevaComponent } from './components/administracion/fecha-nueva/fec
     ResultadosComponent,
     NuevoFixtureComponent,
     PartidoComponent,
-    FechaNuevaComponent
+    FechaNuevaComponent,
+    PlanillaInscripcionComponent
   ],
   imports: [
     BrowserModule,

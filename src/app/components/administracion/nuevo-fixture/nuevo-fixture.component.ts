@@ -21,7 +21,7 @@ export class NuevoFixtureComponent implements OnInit {
     this.route.params.subscribe(params => {
     //this.fixture=this._fixtureService.getFechas(params['categoria']);
     this.equipos=this._fixtureService.getEquipos(params['categoria']);
-    this.fixture = this.crearFixtureBlanco(this.equipos.length+1);
+    this.fixture = this.crearFixtureBlanco(this.equipos.length);
     this.equipoDisponible= this.equipos;
   })
 }
@@ -32,9 +32,9 @@ crearFixtureBlanco(cantEquipos:number) {
     'visitante':''
   }
   let fixtureBlanco= new Array();
-  for(let c = 1; c< cantEquipos ; c++){
+  for(let c = 1; c < cantEquipos ; c++){
   let fecha = new Array();
-  for(let i=1; i < cantEquipos/2 ;i++){
+  for(let i=1; i <= cantEquipos/2 ;i++){
     fecha.push(partido);
   }
   fixtureBlanco.push(fecha);

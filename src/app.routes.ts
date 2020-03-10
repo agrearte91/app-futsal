@@ -6,6 +6,7 @@ import { FairPlayComponent } from './app/tablas/fair-play/fair-play.component';
 import { FixtureComponent } from './app/componentes/fixture/fixture.component';
 import { EstadisticasComponent } from './app/components/estadisticas/estadisticas.component';
 import { NuevoFixtureComponent } from './app/components/administracion/nuevo-fixture/nuevo-fixture.component';
+import { PlanillaInscripcionComponent } from './app/components/planilla-inscripcion/planilla-inscripcion.component';
 
 
 export const ROUTES:  Routes  = [
@@ -18,6 +19,7 @@ export const ROUTES:  Routes  = [
     {path: 'fixture', component:FixtureComponent},
     {path: 'fixture/:categoria', component:FixtureComponent},
     {path: 'estadisticas/:categoria', component:EstadisticasComponent},
+    {path: 'inscripcion', component:PlanillaInscripcionComponent},
 
     {path: 'administracion/cargar-fixture/:categoria', component:NuevoFixtureComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'posiciones' }

@@ -21,15 +21,8 @@ export class PartidoComponent implements OnInit {
   //equipoSeleccionado:string
   equiposDisponibles = new Array()
   constructor(private route:ActivatedRoute ,private _fixtureService:FixtureService) {
-    this.seleccionado=false;
-    if(this.fecha > 1 && this.local){
-        this.equiposDisponibles = _fixtureService.obtenerDisponibles(this.local, this.equipos)
-        console.log(this.equiposDisponibles)
-        console.log(this.fecha)
-    }
-    else {
+      this.seleccionado=false;
       this.equiposDisponibles = this.equipos;
-        }
   }
 
   ngOnInit() {
@@ -37,12 +30,12 @@ export class PartidoComponent implements OnInit {
 
    seleccionarEquipo(){
     this.seleccionado= !this.seleccionado;
-    this.equipoSeleccionado.emit(this.equipoAux)
-    //si local no es nulo significa que el metodo fue llamado desde la pesataña vistante y se debe guardar el partido
     
+    //si local no es nulo significa que el metodo fue llamado desde la pesataña vistante y se debe guardar el partido
+    //console.log(this.local)
     if(this.local){
       this._fixtureService.guardarPartido(this.local,this.equipoAux)
-    
     }
+    this.equipoSeleccionado.emit(this.equipoAux)
   }
 }
