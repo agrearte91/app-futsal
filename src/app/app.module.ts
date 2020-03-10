@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PosicionesComponent } from './tablas/posiciones/posiciones.component';
 import { GoleadoresComponent } from './tablas/goleadores/goleadores.component';
@@ -12,6 +11,9 @@ import { NavbarComponent } from './compartido/navbar/navbar.component';
 import { FixtureComponent } from './componentes/fixture/fixture.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
+import { NuevoFixtureComponent } from './components/administracion/nuevo-fixture/nuevo-fixture.component';
+import { PartidoComponent } from './components/administracion/partido/partido.component';
+import { FechaNuevaComponent } from './components/administracion/fecha-nueva/fecha-nueva.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,15 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
     NavbarComponent,
     FixtureComponent,
     EstadisticasComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    NuevoFixtureComponent,
+    PartidoComponent,
+    FechaNuevaComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES, {useHash: true})
+    RouterModule.forRoot(ROUTES, {useHash: true}),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

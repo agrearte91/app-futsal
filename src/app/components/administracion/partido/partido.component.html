@@ -1,0 +1,8 @@
+<div *ngIf="!seleccionado">
+    <select class="form-control" name="local" [(ngModel)]="equipoAux" (change)="seleccionarEquipo()">
+  <option *ngFor="let equipo of equipos;let i = index;"> {{equipo}} </option>
+</select>
+</div>
+<div *ngIf="seleccionado">
+    {{this.equipoAux}}
+</div>

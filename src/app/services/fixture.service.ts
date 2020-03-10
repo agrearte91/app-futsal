@@ -1,10 +1,27 @@
 import { Injectable } from '@angular/core';
+import { ArrayType } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FixtureService {
   
+  private categorias: any[] = [
+    {
+      'categoria':'A',
+      'equipos':[]
+    },
+    { 'categoria':'B',
+      'equipos': ['Proyecto de Equipo', 'Villa Muten', 'Absolut fc', 'Real Coholicos','200 de paleta',
+                  'Barrilete Cosmico', 'Los Amigos de tu Hermana', 'Brujas fc', 'Manzana de Newton', 'Kawabonga']
+    } 
+  ]
+
+  //estructura auxiar para el armado del fixture de una categoria
+
+  private partidosArmados = new Array();
+
+
   private fixture: any[] = [
       {'fecha':[
         { 'local':'Absolut Fc',
@@ -161,6 +178,20 @@ export class FixtureService {
      return fechas;
    }
 
+getEquipos(categoria:string){
+  let cantCategorias = this.categorias.length;
+  let equipos:any[] = new Array();
+  let encontrado=false;
+  for (let i = 0; i < cantCategorias && !encontrado ; i++){
+    if(this.categorias[i].categoria == categoria){
+      equipos = this.categorias[i].equipos;
+      encontrado = true;
+    } 
+  }
+  return equipos;
+
+}
+
 getProximaFecha(fechaActual:number) {
   if (fechaActual+1 < this.fixture.length)
     return this.fixture[fechaActual+1].fecha
@@ -171,7 +202,38 @@ return 0;
 getFechaAnterior(fechaActual:number) {
   if (fechaActual-1 >= 0)
     return this.fixture[fechaActual-1].fecha
-
-return 0;
+  return 0;
 }
+
+guardarPartido(local: string, visitante: string){
+  
+  this.partidosArmados.push({'local':local,'visitante':visitante});
+  console.log(this.partidosArmados)
+
+}
+//solo se utiliza para fechas posteriores a la fecha 1
+//se arma una nueva lista de dispobles para un equipo teniendo en cuenta la fecha actual y las ateriores
+obtenerDisponibles(equipo:string, candidatos:any[]){
+  let partidosAnteriores = new Array()
+  let nuevosCandidatos= candidatos.slice();
+  let cantidadPartidos= this.partidosArmados.length;
+  for(let i=0; i<cantidadPartidos; i++ ){
+  
+    if (this.partidosArmados[i].local == equipo){
+      partidosAnteriores.push(this.partidosArmados[i].visitante)
+    }
+    if(this.partidosArmados[i].visitante == equipo){
+      partidosAnteriores.push(this.partidosArmados[i].local)
+    }
+  }
+ 
+  //elimino de la lista de candidatos a todos los equipos que estan en partidosAteriores
+  for(let i = 0; i < partidosAnteriores.length ;i++){
+    let ubicacion = nuevosCandidatos.indexOf(partidosAnteriores[i]);
+    nuevosCandidatos.splice(ubicacion,1);
+  }
+  return nuevosCandidatos;
+
+}
+
 }

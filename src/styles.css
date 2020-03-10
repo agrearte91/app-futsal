@@ -15,3 +15,11 @@
 .card-header {
     background-color: rgb(3, 58, 112);
 }
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    font-size: 30px;
+}

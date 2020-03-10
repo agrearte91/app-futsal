@@ -1,0 +1,5 @@
+<div class="row card-deck">
+    <div class="col-md-6" *ngFor="let fecha of fixture;let i=index;">
+        <app-fecha-nueva [numeroFecha]="i+1" [fecha]="fecha"></app-fecha-nueva>
+    </div>
+</div>
