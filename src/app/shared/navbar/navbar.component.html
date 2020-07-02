@@ -11,7 +11,7 @@
                     Categorias
                   </a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu" >
-                    <a ngbDropdownItem   style="cursor: pointer" *ngFor="let categoria of catergorias" (click)="$event.preventDefault()">Categoria {{categoria}}</a>
+                    <a ngbDropdownItem   style="cursor: pointer" *ngFor="let categoria of catergorias" (click)="$event.preventDefault()" routerLink="estadisticas/{{categoria}}">Categoria {{categoria}}</a>
                 </div>
             </li>
         </ul>
