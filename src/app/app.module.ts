@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 import { AppComponent } from './app.component';
 import { PosicionesComponent } from './tablas/posiciones/posiciones.component';
 import { GoleadoresComponent } from './tablas/goleadores/goleadores.component';
@@ -36,6 +39,7 @@ import { FooterComponent } from './shared/footer/footer.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, {useHash: true}),
+    NgbModule,
     FormsModule
   ],
   providers: [],

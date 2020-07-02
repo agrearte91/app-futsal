@@ -9,56 +9,55 @@ import { FixtureService } from '../../../services/fixture.service';
 })
 export class FechaNuevaComponent implements OnInit {
 
-  //variables que envio desde nuevo-fixture.html
-  @Input() numeroFecha : number;
-  @Input()  fecha: any[];
+  // variables que envio desde nuevo-fixture.html
+  @Input() numeroFecha: number;
+  @Input() fecha: any[];
 
-  //variables locales 
+  // variables locales
 
-  equipos = new Array()
-  equipoLocal:string
-  equipoVisitante:string
-  equiposDisponibles = new Array()
-  constructor(private route:ActivatedRoute ,private _fixtureService:FixtureService) {
-    this.equipos=this._fixtureService.getEquipos('B');
+  equipos = new Array();
+  equipoLocal: string;
+  equipoVisitante: string;
+  equiposDisponibles = new Array();
+  constructor(private route: ActivatedRoute, private _fixtureService: FixtureService) {
+    this.equipos = this._fixtureService.getEquipos('B');
     this.equiposDisponibles = this.equipos.slice();
   }
 
   ngOnInit() {
   }
 
-  seleccionarLocal(equipoSeleccionado){//equipo seleccionado viene desde el componente hijo
-    let ubicacion = this.equiposDisponibles.indexOf(equipoSeleccionado)
-    this.equiposDisponibles.splice(ubicacion,1);
-    this.equipoLocal= equipoSeleccionado;
-    //console.log(this.equiposDisponibles)
+  seleccionarLocal(equipoSeleccionado) {// equipo seleccionado viene desde el componente hijo
+    const ubicacion = this.equiposDisponibles.indexOf(equipoSeleccionado);
+    this.equiposDisponibles.splice(ubicacion, 1);
+    this.equipoLocal = equipoSeleccionado;
+    // console.log(this.equiposDisponibles)
   }
 
-  seleccionarVisitante(equipoSeleccionado){//equipo seleccionado viene desde el componente hijo
-    let ubicacion = this.equiposDisponibles.indexOf(equipoSeleccionado)
-    this.equiposDisponibles.splice(ubicacion,1);
-    this.equipoVisitante= equipoSeleccionado
-    this.equipoLocal = null
-    //console.log(this.equiposDisponibles)
+  seleccionarVisitante(equipoSeleccionado) {// equipo seleccionado viene desde el componente hijo
+    const ubicacion = this.equiposDisponibles.indexOf(equipoSeleccionado);
+    this.equiposDisponibles.splice(ubicacion, 1);
+    this.equipoVisitante = equipoSeleccionado;
+    this.equipoLocal = null;
+    // console.log(this.equiposDisponibles)
   }
 
   enviarDisponibles() {
-    let aux = this.equiposDisponibles;
-    //console.log("disponibles")
-    //console.log(aux)
-    //let aux= this._fixtureService.obtenerDisponibles
+    const aux = this.equiposDisponibles;
+    // console.log("disponibles")
+    // console.log(aux)
+    // let aux= this._fixtureService.obtenerDisponibles
     return aux;
   }
-  
-  enviarDisponiblesVisita(){
-    let aux = new Array()
-    if(this.equipoLocal)    
-    {
-      console.log(this.equipoLocal, this.equiposDisponibles)
-      aux = this._fixtureService.obtenerDisponibles(this.equipoLocal,this.equiposDisponibles);
-      console.log("disponible visita", aux)}
-    else{
-     aux = this.equiposDisponibles;
+
+  enviarDisponiblesVisita() {
+    let aux = new Array();
+    if (this.equipoLocal) {
+      console.log(this.equipoLocal, this.equiposDisponibles);
+      aux = this._fixtureService.obtenerDisponibles(this.equipoLocal, this.equiposDisponibles);
+      console.log('disponible visita', aux);
+    } else {
+      aux = this.equiposDisponibles;
     }
     return aux;
   }
