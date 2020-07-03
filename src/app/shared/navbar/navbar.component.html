@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Liga Universitaria de FUTSAL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+        <ul class="navbar-nav ">
+            <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left">
+                <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
+                    Categorias
+                  </a>
+                    <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu" >
+                    <a ngbDropdownItem   style="cursor: pointer" *ngFor="let categoria of catergorias" (click)="$event.preventDefault()">Categoria {{categoria}}</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li *ngFor="let categoria of catergorias" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categoria {{categoria}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="estadisticas/{{categoria}}">Estadisticas</a>
+                    <a class="dropdown-item" routerLink="fixture/{{categoria}}">Fixture</a>
+                </div>
+            </li>
+        </ul>
+    </div>-->
+</nav>
