@@ -171,7 +171,6 @@ export class FixtureService {
      let fechas:any[] = new Array();
      let contador = this.fixture.length;
      for (let i=0; i < contador; i++ ){
-       console.log(this.fixture[i].categoria)
        if(this.fixture[i].categoria==categoria){
          fechas.push(this.fixture[i])
        }

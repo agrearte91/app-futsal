@@ -9,18 +9,18 @@ import { NuevoFixtureComponent } from './app/components/administracion/nuevo-fix
 import { PlanillaInscripcionComponent } from './app/components/planilla-inscripcion/planilla-inscripcion.component';
 
 
-export const ROUTES:  Routes  = [
-    {path: 'posiciones', component: PosicionesComponent},
-    {path: 'posiciones/:categoria', component: PosicionesComponent},
-    {path: 'goleadores', component: GoleadoresComponent},
-    {path: 'goleadores/:categoria', component: GoleadoresComponent},
-    {path: 'fair-play', component: FairPlayComponent},
-    {path: 'fair-play/:categoria', component: FairPlayComponent},
-    {path: 'fixture', component:FixtureComponent},
-    {path: 'fixture/:categoria', component:FixtureComponent},
-    {path: 'estadisticas/:categoria', component:EstadisticasComponent},
-    {path: 'inscripcion', component:PlanillaInscripcionComponent},
+export const ROUTES: Routes = [
+    { path: 'posiciones', component: PosicionesComponent },
+    { path: 'posiciones/:categoria', component: PosicionesComponent },
+    { path: 'goleadores', component: GoleadoresComponent },
+    { path: 'goleadores/:categoria', component: GoleadoresComponent },
+    { path: 'fair-play', component: FairPlayComponent },
+    { path: 'fair-play/:categoria', component: FairPlayComponent },
+    { path: 'fixture', component: FixtureComponent },
+    { path: 'fixture/:categoria', component: FixtureComponent },
+    { path: 'estadisticas/:categoria', component: EstadisticasComponent },
+    { path: 'inscripcion', component: PlanillaInscripcionComponent },
 
-    {path: 'administracion/cargar-fixture/:categoria', component:NuevoFixtureComponent},
-    {path: '**', pathMatch: 'full', redirectTo: 'posiciones' }
-]
+    { path: 'administracion/cargar-fixture/:categoria', component: NuevoFixtureComponent },
+    { path: '**', pathMatch: 'full', redirectTo: 'posiciones' }
+];

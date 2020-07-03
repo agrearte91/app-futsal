@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPosicion, POSICIONES } from '../models/posicion.interface';
+import { IPosicion, POSICIONESA, POSICIONESB } from '../models/posicion.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,14 @@ export class ProvidersService {
   constructor() { }
 
   getPosiciones(categoria: string) {
-    return POSICIONES;
+    if (categoria === 'A') {
+      return POSICIONESA;
+    }
+    if (categoria === 'B') {
+      return POSICIONESB;
+    } else {
+      return POSICIONESA;
+    }
   }
 
 }
