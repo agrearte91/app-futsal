@@ -1,3 +1,128 @@
-<p>
-  planilla-inscripcion works!
-</p>
+<hr>
+<h1 class="text-center">
+    PLANILLA DE INSCRIPCIÓN
+</h1>
+
+<div class="container-fluid">
+    <form [formGroup]="formPlanilla">
+
+        <div class="form-group form-row ">
+            <div class="col">
+                <input type="text" class=" form-control text-center" placeholder="Nombre del equipo" formControlName="nombreEquipo">
+            </div>
+        </div>
+
+        <div formArrayName="jugadores">
+            <div class="form-group form-row">
+                <div class="col">
+                    <h2>Lista de Buena Fé</h2>
+                </div>
+                <div class="col text-right">
+                    <button (click)="agregarJugador()" type="button" class="btn btn-outline-primary">+ Jugador</button>
+                </div>
+            </div>
+
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Legajo</th>
+                        <th>Facultad</th>
+                        <th><i class="fas fa-trash-alt"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let jugador of jugadores().controls ; let i = index;">
+
+                        <td>
+                            <div [formGroupName]="i">
+                                <input type="text" class="form-control" placeholder="DNI sin puntos" formControlName="dni">
+                            </div>
+                        </td>
+                        <td>
+                            <div [formGroupName]="i">
+                                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                            </div>
+                        </td>
+                        <td>
+                            <div [formGroupName]="i">
+                                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+                            </div>
+                        </td>
+                        <td>
+                            <div [formGroupName]="i">
+                                <input type="date" class="form-control" formControlName="fechaNacimiento">
+                            </div>
+                        </td>
+                        <td>
+                            <div [formGroupName]="i">
+                                <input type="text" class="form-control" placeholder="legajo" formControlName="legajo">
+                            </div>
+                        </td>
+                        <td>
+                            <div [formGroupName]="i">
+                                <input type="text" class="form-control" placeholder="facultad" formControlName="facultad">
+                            </div>
+                        </td>
+                        <td>
+                            <div [formGroupName]="i">
+                                <button (click)="quitarJugador(i)" type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group form-row">
+            <h2>Responsables</h2>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Rol</th>
+                    <th>DNI</th>
+                    <th>telefono</th>
+                    <th>e-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr formGroupName="delegado">
+                    <td>Delegado</td>
+                    <td>
+                        <select name="dniDelegado" class="form-control" formControlName="dni">
+                        <option value="" > Seleccionar un delegado</option>
+                        <option *ngFor="let jugador of jugadores().value"> {{jugador.dni}}</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="form-control" placeholder="telefono" formControlName="telefono"></td>
+                    <td><input type="email" class="form-control" placeholder="e-mail" formControlName="correo"></td>
+                </tr>
+                <tr formGroupName="subdelegado">
+                    <td>Subdelegado</td>
+                    <td>
+                        <select name="dniDelegado" class="form-control" formControlName="dni">
+                        <option value=""> Seleccionar un subdelegado</option>
+                        <option *ngFor="let jugador of jugadores().value"> {{jugador.dni}}</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="form-control" placeholder="telefono" formControlName="telefono"></td>
+                    <td><input type="email" class="form-control" placeholder="e-mail" formControlName="correo"></td>
+                </tr>
+                <tr>
+                    <td>Capitán</td>
+                    <td>
+                        <select name="dniDelegado" class="form-control" formControlName="capitan">
+                        <option value=""> Seleccionar un capitan</option>
+                        <option *ngFor="let jugador of jugadores().value"> {{jugador.dni}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </form>
+</div>

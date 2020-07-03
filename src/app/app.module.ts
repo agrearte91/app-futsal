@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PosicionesComponent } from './tablas/posiciones/posiciones.component';
 import { GoleadoresComponent } from './tablas/goleadores/goleadores.component';
@@ -34,7 +34,8 @@ import { PlanillaInscripcionComponent } from './components/planilla-inscripcion/
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, {useHash: true}),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
