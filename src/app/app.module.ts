@@ -1,13 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-=======
-import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
->>>>>>> 7b99cdde28c941d0aaa4b9c1ee210f81dc641533
 import { AppComponent } from './app.component';
 import { PosicionesComponent } from './tablas/posiciones/posiciones.component';
 import { GoleadoresComponent } from './tablas/goleadores/goleadores.component';
@@ -43,13 +39,9 @@ import { FooterComponent } from './shared/footer/footer.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, {useHash: true}),
-<<<<<<< HEAD
     FormsModule,
-    ReactiveFormsModule
-=======
-    NgbModule,
-    FormsModule
->>>>>>> 7b99cdde28c941d0aaa4b9c1ee210f81dc641533
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
