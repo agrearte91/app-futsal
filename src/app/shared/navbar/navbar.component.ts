@@ -17,4 +17,17 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  Loguearse() {
+    localStorage.setItem('user', 'admin');
+    this.ngOnInit();
+  }
+  SalirAdmin() {
+    localStorage.removeItem('user');
+    this.ngOnInit();
+  }
+
+  esAdmin() {
+    return (localStorage.getItem('user') === 'admin');
+  }
+
 }

@@ -7,6 +7,7 @@ import { FixtureComponent } from './app/componentes/fixture/fixture.component';
 import { EstadisticasComponent } from './app/components/estadisticas/estadisticas.component';
 import { NuevoFixtureComponent } from './app/components/administracion/nuevo-fixture/nuevo-fixture.component';
 import { PlanillaInscripcionComponent } from './app/components/planilla-inscripcion/planilla-inscripcion.component';
+import { HomeComponent } from './app/components/home/home.component';
 
 
 export const ROUTES: Routes = [
@@ -20,7 +21,8 @@ export const ROUTES: Routes = [
     { path: 'fixture/:categoria', component: FixtureComponent },
     { path: 'estadisticas/:categoria', component: EstadisticasComponent },
     { path: 'inscripcion', component: PlanillaInscripcionComponent },
+    { path: 'home', component: HomeComponent },
 
     { path: 'administracion/cargar-fixture/:categoria', component: NuevoFixtureComponent },
-    { path: '**', pathMatch: 'full', redirectTo: 'posiciones' }
+    { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

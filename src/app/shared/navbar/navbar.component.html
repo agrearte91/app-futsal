@@ -14,8 +14,23 @@
                     <a ngbDropdownItem   style="cursor: pointer" *ngFor="let categoria of categorias" (click)="$event.preventDefault()" routerLink="estadisticas/{{categoria.cat_id}}">{{categoria.cat_descripcion}}</a>
                 </div>
             </li>
+
+            <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left" *ngIf="esAdmin()">
+                <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
+                    Administracion
+                  </a>
+                    <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu" >
+                    <a ngbDropdownItem   style="cursor: pointer"  (click)="$event.preventDefault()">Categorias</a>
+                    <a ngbDropdownItem   style="cursor: pointer"  (click)="$event.preventDefault()">Equipos</a>
+                    <a ngbDropdownItem   style="cursor: pointer"  (click)="$event.preventDefault()">Fixture</a>
+                </div>
+            </li>
+           
         </ul>
     </div>
+    
+    <button type="button" *ngIf="!esAdmin()" class="btn btn-outline-primary mr-0" (click)="Loguearse()">Ingresar</button>
+    <button type="button" *ngIf="esAdmin()" class="btn btn-outline-danger mr-0" (click)="SalirAdmin()">Salir</button>
     <!--  <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li *ngFor="let categoria of catergorias" class="nav-item dropdown">
