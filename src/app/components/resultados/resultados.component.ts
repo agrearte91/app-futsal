@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FixtureService } from '../../services/fixture.service';
+import { ProvidersService } from 'src/app/services/providers.service';
+import { IFecha } from 'src/app/models/fecha.interface';
 
 @Component({
   selector: 'app-resultados',
@@ -7,31 +9,31 @@ import { FixtureService } from '../../services/fixture.service';
   styleUrls: ['./resultados.component.css']
 })
 export class ResultadosComponent implements OnInit {
-  
-  fecha:[]
-  nroFecha=1
-  
-  constructor(private fixture:FixtureService) {
-    this.fecha = this.fixture.getProximaFecha(this.nroFecha);
-    this.nroFecha++;  
-   }
+
+  fechas: IFecha[];
+  fechaActual: IFecha;
+  nroFecha = 1;
+
+  constructor(private fixture: FixtureService, private provServ: ProvidersService) {
+    this.fechas = this.provServ.getFechas('A');
+    this.fechaActual = this.fechas[this.nroFecha - 1];
+  }
 
   ngOnInit() {
   }
 
-  getProximaFecha(fechaActual:number){
-    this.fecha= this.fixture.getProximaFecha(fechaActual);
-    this.nroFecha++;
+  getProximaFecha(fechaActual: number) {
+    this.nroFecha = this.nroFecha + 1;
+    this.fechaActual = this.fechas[this.nroFecha - 1];
+
   }
 
-  getFechaAnterior(fechaActual:number){
-    console.log(this.nroFecha)
-    this.fecha = this.fixture.getFechaAnterior(fechaActual);
-    this.nroFecha--;
-    console.log(this.nroFecha)
+  getFechaAnterior(fechaActual: number) {
+    this.nroFecha = this.nroFecha - 1;
+    this.fechaActual = this.fechas[this.nroFecha - 1];
   }
 
-  getCantidadPartidos(){
-    return this.fixture.getFechas("B").length;
+  getCantidadPartidos() {
+    return this.fechas.length;
   }
 }

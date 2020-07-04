@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IPosicion, POSICIONESA, POSICIONESB } from '../models/posicion.interface';
+import { CATEGORIAS } from '../models/categoria.interface';
+import { FECHASA } from '../models/fecha.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +23,11 @@ export class ProvidersService {
     }
   }
 
+  getCategorias() {
+    return CATEGORIAS;
+  }
+
+  getFechas(categoria: string) {
+    return FECHASA;
+  }
 }
