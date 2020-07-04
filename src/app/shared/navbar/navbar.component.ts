@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProvidersService } from 'src/app/services/providers.service';
+import { ICategoria } from 'src/app/models/categoria.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  catergorias: string[] = ['A', 'B', 'C', 'D', 'E', 'Senior', 'fem'];
+  categorias: ICategoria[];
   collapsed = true;
-  constructor() { }
+  constructor( private provServ: ProvidersService) {
+    this.categorias = this.provServ.getCategorias();
+   }
 
   ngOnInit() {
+  }
+
+  Loguearse() {
+    localStorage.setItem('user', 'admin');
+    this.ngOnInit();
+  }
+  SalirAdmin() {
+    localStorage.removeItem('user');
+    this.ngOnInit();
+  }
+
+  esAdmin() {
+    return (localStorage.getItem('user') === 'admin');
   }
 
 }

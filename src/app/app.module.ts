@@ -19,6 +19,7 @@ import { PartidoComponent } from './components/administracion/partido/partido.co
 import { FechaNuevaComponent } from './components/administracion/fecha-nueva/fecha-nueva.component';
 import { PlanillaInscripcionComponent } from './components/planilla-inscripcion/planilla-inscripcion.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     PartidoComponent,
     FechaNuevaComponent,
     PlanillaInscripcionComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,7 @@
 nav {
     border-bottom: solid blue
 }
+
+.pos {
+    text-align: end;
+}
