@@ -45,6 +45,10 @@ export class ProvidersService {
     return CATEGORIAS;
   }
 
+  getCategoria(cati: string) {
+    return CATEGORIAS.filter(cat => cat.cat_id === cati);
+  }
+
   getFechas(categoria: string) {
     if (categoria === 'A') {
       return FECHASA;

@@ -21,6 +21,7 @@ import { PlanillaInscripcionComponent } from './components/planilla-inscripcion/
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AltasComponent } from './components/altas/altas.component';
+import { ACategoriaComponent } from './components/acategoria/acategoria.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AltasComponent } from './components/altas/altas.component';
     PlanillaInscripcionComponent,
     FooterComponent,
     HomeComponent,
-    AltasComponent
+    AltasComponent,
+    ACategoriaComponent
   ],
   imports: [
     BrowserModule,
