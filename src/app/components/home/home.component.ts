@@ -12,12 +12,10 @@ export class HomeComponent implements OnInit {
   categorias: ICategoria[];
   constructor(private provServ: ProvidersService) {
     this.categorias = this.provServ.getCategorias();
-    console.log(this.categorias);
    }
 
   ngOnInit() {
     this.categorias = this.provServ.getCategorias();
-    console.log(this.categorias);
   }
 
 }

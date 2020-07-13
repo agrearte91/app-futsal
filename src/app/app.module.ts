@@ -5,13 +5,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
-import { PosicionesComponent } from './tablas/posiciones/posiciones.component';
-import { GoleadoresComponent } from './tablas/goleadores/goleadores.component';
-import { FairPlayComponent } from './tablas/fair-play/fair-play.component';
+import { PosicionesComponent } from './components/tablas/posiciones/posiciones.component';
+import { GoleadoresComponent } from './components/tablas/goleadores/goleadores.component';
+import { FairPlayComponent } from './components/tablas/fair-play/fair-play.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from '../app.routes';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FixtureComponent } from './componentes/fixture/fixture.component';
+import { FixtureComponent } from './components/fixture/fixture.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 import { NuevoFixtureComponent } from './components/administracion/nuevo-fixture/nuevo-fixture.component';

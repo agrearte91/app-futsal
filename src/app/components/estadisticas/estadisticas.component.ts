@@ -12,8 +12,10 @@ export class EstadisticasComponent implements OnInit {
 
   // SE RECUPERA EL PARAMETRO INGRESADO EN RUTA
   constructor(private route: ActivatedRoute) {
-    // tslint:disable-next-line: no-string-literal
-    this.route.params.subscribe((params) => { this.categoriaSeleccionada = params['categoria']; console.log(this.categoriaSeleccionada); });
+    this.route.params.subscribe((params) => {
+      // tslint:disable-next-line: no-string-literal
+      this.categoriaSeleccionada = params['categoria'];
+    });
   }
 
   ngOnInit() {

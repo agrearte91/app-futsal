@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header py-1">
+        <h4 class="text-white">GOLEADORES</h4>
+    </div>
+    <div class="card-body">
+        <p *ngIf="goleadores === undefined" class="text-center"> <b> No Hay Datos Guardados </b> </p>
+        <table class="table table-sm table-striped table-bordered table-hover table-secondary" *ngIf="goleadores !== undefined">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Jugador</th>
+                    <th scope="col">Equipo</th>
+                    <th scope="col">Goles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gole of goleadores; let i=index">
+                    <th scope="row"> {{i+1}}</th>
+                    <td>{{gole.gol_Jugador}}</td>
+                    <td>{{gole.gol_Equipo}}</td>
+                    <td>{{gole.gol_goles}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

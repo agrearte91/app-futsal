@@ -5,15 +5,15 @@
             <app-posiciones [categoria] ='categoriaSeleccionada' ></app-posiciones>
         </div>
         <div class="col-md-6">
-            <app-resultados></app-resultados>
+            <app-resultados  [categoria] ='categoriaSeleccionada'></app-resultados>
         </div>
     </div>
     <div class="row mt-2 mb-2" >
         <div class="col-md-6">
-            <app-goleadores></app-goleadores>
+            <app-goleadores [categoria] ='categoriaSeleccionada'></app-goleadores>
         </div>
         <div class="col-md-6">
-            <app-fair-play></app-fair-play>
+            <app-fair-play [categoria] ='categoriaSeleccionada'></app-fair-play>
         </div>
     </div>
 </div>

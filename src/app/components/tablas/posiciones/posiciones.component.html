@@ -3,7 +3,8 @@
         <h4 class="text-white">POSICIONES</h4>
     </div>
     <div class="card-body">
-        <table class="table table-sm table-striped table-bordered table-hover table-secondary">
+        <p *ngIf="posiciones === undefined" class="text-center"> <b> No Hay Posiciones Guardadas</b> </p>
+        <table class="table table-sm table-striped table-bordered table-hover table-secondary" *ngIf="posiciones !== undefined">
             <thead class="thead-dark">
                 <tr>
                     <th>#</th>

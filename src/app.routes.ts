@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { GoleadoresComponent } from './app/tablas/goleadores/goleadores.component';
-import { PosicionesComponent } from './app/tablas/posiciones/posiciones.component';
-import { FairPlayComponent } from './app/tablas/fair-play/fair-play.component';
-import { FixtureComponent } from './app/componentes/fixture/fixture.component';
+import { GoleadoresComponent } from './app/components/tablas/goleadores/goleadores.component';
+import { PosicionesComponent } from './app/components/tablas/posiciones/posiciones.component';
+import { FairPlayComponent } from './app/components/tablas/fair-play/fair-play.component';
+import { FixtureComponent } from './app/components/fixture/fixture.component';
 import { EstadisticasComponent } from './app/components/estadisticas/estadisticas.component';
 import { NuevoFixtureComponent } from './app/components/administracion/nuevo-fixture/nuevo-fixture.component';
 import { PlanillaInscripcionComponent } from './app/components/planilla-inscripcion/planilla-inscripcion.component';

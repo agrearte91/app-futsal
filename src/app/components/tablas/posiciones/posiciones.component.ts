@@ -26,7 +26,6 @@ export class PosicionesComponent implements OnInit {
 
   ngOnInit() {
     this.posiciones = this.provService.getPosiciones(this.categoria);
-
     // Ordena el arreglo por puntos
     this.posiciones.sort((a, b) => b.pos_puntos - a.pos_puntos);
   }

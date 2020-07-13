@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="card-body">
-
+        <p *ngIf="this.fechas === undefined" class="text-center"> <b> No Hay Fixture Cargado</b> </p>
         <table class="table table-striped  table-hover table-dark" *ngIf="this.fechas !== undefined">
             <thead>
                 <tr class="d-flex">

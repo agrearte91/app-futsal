@@ -3,25 +3,25 @@
         <h4 class="text-white">FAIR PLAY</h4>
     </div>
     <div class="card-body">
-        <table class="table table-striped table-bordered table-hover">
+        <p *ngIf="fairPlays === undefined" class="text-center"> <b> No Hay Datos Guardados </b></p>
+        <table class="table table-sm table-striped table-bordered table-hover" *ngIf="fairPlays !== undefined">
             <thead class="thead-dark">
                 <tr class="d-flex">
                     <th class="col-1">#</th>
-                    <th class="col-8">equipo</th>
+                    <th class="col-8">Equipo</th>
                     <th class="col-1 text-left"><button class="btn btn-danger"></button></th>
                     <th class="col-1"><button class="btn btn-warning"></button></th>
                     <th class="col-1"><button class="btn btn-primary"></button></th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="d-flex">
-                    <td class="col-1"> 1 </td>
-                    <th class="col-8">Real coholicos</th>
-                    <td class="col-1">1</td>
-                    <td class="col-1">3</td>
-                    <td class="col-1">0</td>
+                <tr class="d-flex" *ngFor="let item of fairPlays; let i=index">
+                    <td class="col-1"> {{i+1}} </td>
+                    <th class="col-8">{{item.fp_Equipo}}</th>
+                    <td class="col-1">{{item.fp_Rojas}}</td>
+                    <td class="col-1">{{item.fp_Amarillas}}</td>
+                    <td class="col-1">{{item.fp_Azules}}</td>
                 </tr>
-
             </tbody>
         </table>
     </div>
