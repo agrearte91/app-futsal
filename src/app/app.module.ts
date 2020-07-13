@@ -20,6 +20,7 @@ import { FechaNuevaComponent } from './components/administracion/fecha-nueva/fec
 import { PlanillaInscripcionComponent } from './components/planilla-inscripcion/planilla-inscripcion.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { AltasComponent } from './components/altas/altas.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HomeComponent } from './components/home/home.component';
     FechaNuevaComponent,
     PlanillaInscripcionComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    AltasComponent
   ],
   imports: [
     BrowserModule,
