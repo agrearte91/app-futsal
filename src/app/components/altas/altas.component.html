@@ -5,65 +5,19 @@
   <div class="card-body text-center">
     <form #f="ngForm">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="check1" [(ngModel)]="esCategoria" (change) ="seleccionaOpcion()">
+        <input class="form-check-input" type="checkbox" name="check1" [(ngModel)]="esCategoria">
         <label class="form-check-label" for="check1">Categorias</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="check2" [(ngModel)]="esEquipo" (change) ="seleccionaOpcion()">
+        <input class="form-check-input" type="checkbox" name="check2" [(ngModel)]="esEquipo">
         <label class="form-check-label" for="check2">Equipos</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="check3" [(ngModel)]="esJugador" (change) ="seleccionaOpcion()">
+        <input class="form-check-input" type="checkbox" name="check3" [(ngModel)]="esJugador">
         <label class="form-check-label" for="check3">Jugadores</label>
       </div>
     </form>
   </div>
 </div>
+<app-acategoria *ngIf="(esCategoria) === true"></app-acategoria>
 
-<div class="card mt-2 mb-2" *ngIf="(esCategoria) === true">
-  <div class="card-header text-center" style="color: white;">
-    Categoria
-  </div>
-  <div class="card-body">
-    <div class="row">
-        <div class="col-md-6">
-          <div class="card border-right">
-            <div class="card-body">
-              <form>
-                <div class="form-group">
-                  <label for="">Id:</label>
-                  <input type="text"
-                    class="form-control" name="" id="" aria-describedby="helpId" name="catid" [(ngModel)]="categoriaSeleccionada.cat_id" [readonly] ="soloLectura">
-                </div>
-                <div class="form-group">
-                  <label for="">Descripción:</label>
-                  <input type="text"
-                    class="form-control" name="" id="" aria-describedby="helpId" name="catdes" [(ngModel)]="categoriaSeleccionada.cat_descripcion" [readonly] ="soloLectura">
-                </div>
-                <button *ngIf="!soloLectura" (click)="guardar()" class="btn btn-primary" >Guardar</button>
-                <button *ngIf="!soloLectura" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
-                <button *ngIf="soloLectura" (click)="modificar()" class="btn btn-warning">Modificar</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="col-md-6">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Descripción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of categorias" (click)="seleccionar(item.cat_id)">
-                <th>{{item.cat_id}}</th>
-                <td>{{item.cat_descripcion}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-    </div>
-  </div>
-</div>
