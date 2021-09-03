@@ -19,18 +19,18 @@ export class PlanillaInscripcionComponent implements OnInit {
       jugadores: this.fb.array(
         [   
           this.fb.group({
-            dni: this.fb.control(''), //hacer validacion para no repetir jugadores en la lista
+            dni: this.fb.control('',Validators.required), //hacer validacion para no repetir jugadores en la lista
             nombre: this.fb.control('',Validators.required),
             apellido: this.fb.control('', Validators.required),
             fechaNacimiento: new FormControl('', Validators.required),
             legajo: new FormControl('',Validators.required), //hacer una validacion de que el legajo no sea duplicado
-            facultad: new FormControl('',[Validators.required, validarEsFacultad])
+            facultad: new FormControl('')
           })
-        ]
+        ],Validators.minLength(5)
       ),
       
       delegado: this.fb.group ({
-        dni : new FormControl('',Validators.required),//agregar que el dni pertezca a uno de la lista de jugadores
+        dni : new FormControl(''),//agregar que el dni pertezca a uno de la lista de jugadores
         telefono : this.fb.control('',[Validators.pattern("[0-9]+"), Validators.minLength(9)]),
         correo : new FormControl('', [Validators.required, Validators.email])
       }),
@@ -43,35 +43,51 @@ export class PlanillaInscripcionComponent implements OnInit {
 
       capitan: this.fb.control('',Validators.required)
 
-      
     });
 
      ((<FormGroup>((<FormArray>this.formPlanilla.controls['jugadores']).controls)[0])
      .controls['dni']
      .setValidators([Validators.required, Validators.pattern("[0-9]+"), dniUnico.bind(this.formPlanilla)]));
     
-    //valido que el delegado y subdelegado no sean la misma persona
+    //subdelegado no es la misma persona que el delegado
      (<FormGroup>this.formPlanilla.controls['subdelegado']).controls['dni']
-     .setValidators([Validators.required, noigual.bind(this.formPlanilla.controls['delegado'])])
+     .setValidators([Validators.required, noigual.bind(this.formPlanilla.controls['delegado'])]);
+    //delegado no es la misma persona que el delegado
+     (<FormGroup>this.formPlanilla.controls['delegado']).controls['dni']
+     .setValidators([Validators.required, noigual.bind(this.formPlanilla.controls['subdelegado'])])
+    
 
-    console.log(this.formPlanilla)
-
-    this.formPlanilla.controls['jugadores'].statusChanges
+    this.formPlanilla.statusChanges
     .subscribe(data => {
-      console.log(  data);
+      console.log(data);
+      console.log(this.formPlanilla)
     });
 
     (<FormGroup>this.formPlanilla.controls['subdelegado']).controls['dni']
     .statusChanges.subscribe(data => {
       console.log('dni subdelegado')
-      console.log(  data);
+      console.log( data);
     });
+
+    console.log(this.formPlanilla.value)
+
    }
 
+   nombreEquipo() : FormControl{
+    return this.formPlanilla.controls['nombreEquipo'] as FormControl
+   }
 
    jugadores() : FormArray {
      return this.formPlanilla.controls['jugadores'] as FormArray
    }
+
+   delegado() : FormGroup {
+     return this.formPlanilla.controls['delegado'] as FormGroup
+   }
+
+   subdelegado() : FormGroup {
+    return this.formPlanilla.controls['subdelegado'] as FormGroup
+  }
 
    agregarJugador() {
      (<FormArray>this.formPlanilla.controls['jugadores']).push( 
@@ -81,7 +97,7 @@ export class PlanillaInscripcionComponent implements OnInit {
       apellido: this.fb.control('', Validators.required),
       fechaNacimiento: new FormControl('', Validators.required),
       legajo: new FormControl('',Validators.required), //hacer una validacion de que el legajo no sea duplicado
-      facultad: new FormControl('',[Validators.required, validarEsFacultad]) //hacer validacion de facultades de la universidad 
+      facultad: new FormControl('') //hacer validacion de facultades de la universidad 
      }))
   }
 
@@ -91,5 +107,9 @@ export class PlanillaInscripcionComponent implements OnInit {
 
   
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    console.log(this.formPlanilla)
   }
 }

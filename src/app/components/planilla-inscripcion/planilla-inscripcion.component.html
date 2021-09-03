@@ -6,9 +6,12 @@
 <div class="container-fluid">
     <form [formGroup]="formPlanilla">
 
-        <div class="form-group form-row ">
+        <div class="form-group form-row" [ngClass]="{'was-validated': nombreEquipo().valid}">
             <div class="col">
-                <input type="text" class=" form-control text-center" placeholder="Nombre del equipo" formControlName="nombreEquipo">
+                <input type="text" class="form-control text-center" placeholder="Nombre del equipo" formControlName="nombreEquipo" [ngClass]="{'is-invalid': nombreEquipo().dirty && !nombreEquipo().valid}">
+                <div class="invalid-feedback" *ngIf="nombreEquipo().errors?.required">
+                    *Obligatorio
+                </div>
             </div>
         </div>
 
@@ -17,6 +20,7 @@
                 <div class="col">
                     <h2>Lista de Buena Fé</h2>
                 </div>
+                <div *ngIf="5 >jugadores().length" class="alert alert-danger"> Minimo 5 jugadores </div>
                 <div class="col text-right">
                     <button (click)="agregarJugador()" type="button" class="btn btn-outline-primary">+ Jugador</button>
                 </div>
@@ -36,26 +40,42 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let jugador of jugadores().controls ; let i = index;">
+                        <td>
+                            <div [formGroupName]="i" [ngClass]="{'was-validated': jugador.controls['dni'].valid}">
+                                <input type="text" class="form-control" placeholder="DNI sin puntos" formControlName="dni" [ngClass]="{'is-invalid': jugador.controls['dni'].dirty && !jugador.controls['dni'].valid}">
+                                <div class="invalid-feedback" *ngIf="jugador.controls['dni'].errors?.required">
+                                    *Obligatorio
+                                </div>
+                                <div class="invalid-feedback" *ngIf="jugador.controls['dni'].errors?.dniunico">
+                                    Valores repetidos
+                                </div>
+                            </div>
 
+                        </td>
                         <td>
-                            <div [formGroupName]="i">
-                                <input type="text" class="form-control" placeholder="DNI sin puntos" formControlName="dni">
+                            <div [formGroupName]="i" [ngClass]="{'was-validated': jugador.controls['nombre'].valid}">
+                                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': jugador.controls['nombre'].dirty && !jugador.controls['nombre'].valid}">
+                                <div class="invalid-feedback" *ngIf="jugador.controls['nombre'].errors?.required">
+                                    *Obligatorio
+                                </div>
                             </div>
                         </td>
                         <td>
-                            <div [formGroupName]="i">
-                                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                            <div [formGroupName]="i" [ngClass]="{'was-validated': jugador.controls['apellido'].valid}">
+                                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido" [ngClass]="{'is-invalid': jugador.controls['apellido'].dirty && !jugador.controls['apellido'].valid}">
+                                <div class="invalid-feedback" *ngIf="jugador.controls['apellido'].errors?.required">
+                                    *Obligatorio
+                                </div>
                             </div>
                         </td>
                         <td>
-                            <div [formGroupName]="i">
-                                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+                            <div [formGroupName]="i" [ngClass]="{'was-validated': jugador.controls['fechaNacimiento'].valid}">
+                                <input type="date" class="form-control" formControlName="fechaNacimiento" [ngClass]="{'is-invalid': jugador.controls['fechaNacimiento'].dirty && !jugador.controls['fechaNacimiento'].valid}">
+                                <div class="invalid-feedback" *ngIf="jugador.controls['fechaNacimiento'].errors?.required">
+                                    *Obligatorio
+                                </div>
                             </div>
-                        </td>
-                        <td>
-                            <div [formGroupName]="i">
-                                <input type="date" class="form-control" formControlName="fechaNacimiento">
-                            </div>
+
                         </td>
                         <td>
                             <div [formGroupName]="i">
@@ -92,25 +112,49 @@
             <tbody>
                 <tr formGroupName="delegado">
                     <td>Delegado</td>
-                    <td>
-                        <select name="dniDelegado" class="form-control" formControlName="dni">
+                    <td [ngClass]="{'was-validated': delegado().controls['dni'].valid}">
+                        <select name="dniDelegado" class="form-control" formControlName="dni" formControlName="dni" [ngClass]="{'is-invalid': delegado().controls['dni'].dirty && !delegado().controls['dni'].valid}">
                         <option value="" > Seleccionar un delegado</option>
                         <option *ngFor="let jugador of jugadores().value"> {{jugador.dni}}</option>
                         </select>
+                        <div class="invalid-feedback" *ngIf="delegado().controls['dni'].errors?.noigual">
+                            *Delegado y Subdelegado no pueden ser la misma persona
+                        </div>
                     </td>
+
                     <td><input type="number" class="form-control" placeholder="telefono" formControlName="telefono"></td>
-                    <td><input type="email" class="form-control" placeholder="e-mail" formControlName="correo"></td>
+
+                    <td [ngClass]="{'was-validated': delegado().controls['correo'].valid}">
+                        <input type="email" class="form-control" placeholder="e-mail" formControlName="correo" [ngClass]="{'is-invalid': delegado().controls['correo'].dirty && !delegado().controls['correo'].valid}">
+                        <div class="invalid-feedback" *ngIf="delegado().controls['correo'].errors?.email">
+                            Formato incorrecto
+                        </div>
+                        <div class="invalid-feedback" *ngIf="delegado().controls['correo'].errors?.required">
+                            *Obligatorio
+                        </div>
+                    </td>
                 </tr>
                 <tr formGroupName="subdelegado">
                     <td>Subdelegado</td>
-                    <td>
-                        <select name="dniDelegado" class="form-control" formControlName="dni">
+                    <td [ngClass]="{'was-validated': subdelegado().controls['dni'].valid}">
+                        <select name="dniDelegado" class="form-control" formControlName="dni" [ngClass]="{'is-invalid': subdelegado().controls['dni'].dirty && !subdelegado().controls['dni'].valid}">
                         <option value=""> Seleccionar un subdelegado</option>
                         <option *ngFor="let jugador of jugadores().value"> {{jugador.dni}}</option>
                         </select>
+                        <div class="invalid-feedback" *ngIf="subdelegado().controls['dni'].errors?.noigual">
+                            *Delegado y Subdelegado no pueden ser la misma persona
+                        </div>
                     </td>
                     <td><input type="number" class="form-control" placeholder="telefono" formControlName="telefono"></td>
-                    <td><input type="email" class="form-control" placeholder="e-mail" formControlName="correo"></td>
+                    <td [ngClass]="{'was-validated': subdelegado().controls['correo'].valid}">
+                        <input type="email" class="form-control" placeholder="e-mail" formControlName="correo" [ngClass]="{'is-invalid': subdelegado().controls['correo'].dirty && !subdelegado().controls['correo'].valid}">
+                        <div class="invalid-feedback" *ngIf="subdelegado().controls['correo'].errors?.required">
+                            *Obligatorio
+                        </div>
+                        <div class="invalid-feedback" *ngIf="subdelegado().controls['correo'].errors?.email">
+                            Formato incorrecto
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Capitán</td>
@@ -124,5 +168,11 @@
             </tbody>
 
         </table>
+
+        <div class="col-12">
+            <button class="btn-block btn-primary" [disabled]="!formPlanilla.valid" type="submit">Confirmar Inscripcion</button>
+        </div>
+        <br>
+        <br>
     </form>
 </div>

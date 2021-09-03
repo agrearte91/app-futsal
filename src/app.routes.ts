@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { GoleadoresComponent } from './app/components/tablas/goleadores/goleadores.component';
 import { PosicionesComponent } from './app/components/tablas/posiciones/posiciones.component';
 import { FairPlayComponent } from './app/components/tablas/fair-play/fair-play.component';

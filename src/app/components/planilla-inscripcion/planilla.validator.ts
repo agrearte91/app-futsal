@@ -18,8 +18,7 @@ export function dniUnico(control: FormControl): {[s: string]: boolean} {
   let jugadores = this.controls['jugadores'].value
   //console.log(jugadores)
   for (let i=0 ; i < jugadores.length; i++ ){
-    //console.log(dni)
-    if(dni === jugadores[i].dni){
+    if( dni && dni === jugadores[i].dni){
       return { dniunico: true}
     }
   }
@@ -27,9 +26,12 @@ export function dniUnico(control: FormControl): {[s: string]: boolean} {
 
 }
 
+//Valido que el delegado y el subdelagado no sean la misma persona
 export function noigual( control: FormControl): {[s:string]:boolean}{
+  console.log('estoy dentro de la validacion noigual')
   console.log(this.controls['dni'].value)
-  if(control.value === this.controls['dni'].value){
+  let dni = control.value
+  if(dni && dni === this.controls['dni'].value){
     return{
       noigual:true
     }
@@ -37,5 +39,6 @@ export function noigual( control: FormControl): {[s:string]:boolean}{
   return null;
 
 }
+
 
 
