@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -43,7 +44,8 @@ import { HomeComponent } from './components/home/home.component';
     RouterModule.forRoot(ROUTES, {useHash: true}),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,11 @@
 import { IPartido } from './partido.interface';
 
-
 export interface IFecha {
-    fec_numero: number;
-    fec_partidos: IPartido[];
+    nro_fecha: number,
+    partidos: IPartido[]
 }
 
-export const FECHASA: IFecha[] = [
+/*export const FECHASA: IFecha[] = [
     {
         fec_numero: 1,
         fec_partidos: [
@@ -87,4 +86,4 @@ export const FECHASA: IFecha[] = [
             },
         ]
     },
-];
+];*/

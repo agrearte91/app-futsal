@@ -22,15 +22,15 @@
             <tbody>
                 <tr *ngFor="let item of this.posiciones; let i=index">
                     <th>{{i + 1}}</th>
-                    <th>{{item.pos_equipo}}</th>
-                    <td>{{item.pos_puntos}}</td>
-                    <td>{{item.pos_pjugados}}</td>
-                    <td>{{item.pos_pganados}}</td>
-                    <td>{{item.pos_pempatados}}</td>
-                    <td>{{item.pos_pperdidos}}</td>
-                    <td>{{item.pos_gfavor}}</td>
-                    <td>{{item.pos_gcontra}}</td>
-                    <td>{{item.pos_dgol}}</td>
+                    <th>{{item.nombre_equipo}}</th>
+                    <td>{{item.puntos}}</td>
+                    <td>{{item.partidos_jugados}}</td>
+                    <td>{{item.partidos_ganados}}</td>
+                    <td>{{item.partidos_empatados}}</td>
+                    <td>{{item.partidos_perdidos}}</td>
+                    <td>{{item.goles_favor}}</td>
+                    <td>{{item.goles_contra}}</td>
+                    <td>{{item.diferencia_goles}}</td>
                 </tr>
             </tbody>
         </table>

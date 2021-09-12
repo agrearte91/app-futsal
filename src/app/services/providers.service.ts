@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IPosicion, POSICIONESA, POSICIONESB } from '../models/posicion.interface';
-import { CATEGORIAS } from '../models/categoria.interface';
-import { FECHASA } from '../models/fecha.interface';
+//import { IPosicion, POSICIONESA, POSICIONESB } from '../models/posicion.interface';
+//import { IPosicion } from '../models/posicion.interface';
+//import { CATEGORIAS } from '../models/categoria.interface';
+//import { FECHASA } from '../models/fecha.interface';
 import { GOLEADORESA } from '../models/goleador.interface';
 import { FAIRA } from '../models/fairplay.interface';
 
@@ -10,16 +11,16 @@ import { FAIRA } from '../models/fairplay.interface';
 })
 export class ProvidersService {
 
-  posiciones: IPosicion;
+  //posiciones: IPosicion;
 
   constructor() { }
 
   getPosiciones(categoria: string) {
     if (categoria === 'A') {
-      return POSICIONESA;
+      return [];
     }
     if (categoria === 'B') {
-      return POSICIONESB;
+      return [];
     } else {
       return undefined;
     }
@@ -42,12 +43,14 @@ export class ProvidersService {
   }
 
   getCategorias() {
-    return CATEGORIAS;
+    return [{
+      nombre: 'A'
+  }];
   }
 
   getFechas(categoria: string) {
     if (categoria === 'A') {
-      return FECHASA;
+      //return FECHASA;
     } else {
       return undefined;
     }

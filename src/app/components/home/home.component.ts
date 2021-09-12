@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProvidersService } from 'src/app/services/providers.service';
 import { ICategoria } from 'src/app/models/categoria.interface';
+import { CategoriaService } from '../../services/categoria.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,14 @@ import { ICategoria } from 'src/app/models/categoria.interface';
 export class HomeComponent implements OnInit {
 
   categorias: ICategoria[];
-  constructor(private provServ: ProvidersService) {
-    this.categorias = this.provServ.getCategorias();
-   }
+  constructor(private catServ: CategoriaService) {
+    this.catServ.getCategorias().subscribe(
+      categorias => this.categorias =categorias
+    )
+  }
 
   ngOnInit() {
-    this.categorias = this.provServ.getCategorias();
+   // this.categorias = this.provServ.getCategorias();
   }
 
 }

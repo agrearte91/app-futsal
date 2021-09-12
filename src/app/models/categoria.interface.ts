@@ -1,9 +1,13 @@
 export interface ICategoria {
-    cat_id: string;
-    cat_descripcion: string;
+    anio_torneo: number;
+    id_categoria: number;
+    id_tabla: number;
+    nombre: string;
+    tipo: string;
+    tipo_torneo: string;
 }
 
-
+/**
 export const CATEGORIAS: ICategoria[] = [
     {
         cat_id: 'A', cat_descripcion: 'Categoria A'
@@ -26,4 +30,4 @@ export const CATEGORIAS: ICategoria[] = [
     {
         cat_id: 'F', cat_descripcion: 'Categoria Femenina'
     }
-];
+];*/

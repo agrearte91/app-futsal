@@ -1,16 +1,17 @@
 export interface IPosicion {
-    pos_equipo: string;
-    pos_puntos: number;
-    pos_pjugados: number;
-    pos_pganados: number;
-    pos_pempatados: number;
-    pos_pperdidos: number;
-    pos_gfavor: number;
-    pos_gcontra: number;
-    pos_dgol: number;
+    id_equipo: number;
+    nombre_equipo: string;
+    puntos: number;
+    partidos_jugados: number;
+    partidos_ganados: number;
+    partidos_empatados: number;
+    partidos_perdidos: number;
+    goles_favor: number;
+    goles_contra: number;
+    diferencia_goles: number;
   }
 
-export const POSICIONESA: IPosicion[] = [
+/*export const POSICIONESA: IPosicion[] = [
     {
         pos_equipo: 'Manzana de Newton',
         pos_puntos: 10,
@@ -234,4 +235,4 @@ export const POSICIONESB: IPosicion[] = [
         pos_gcontra: 13,
         pos_dgol: -12
     },
-];
+];*/

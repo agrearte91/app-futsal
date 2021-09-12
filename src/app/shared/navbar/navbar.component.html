@@ -1,18 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-        <img src="../../../assets/logoFutsal32x32.png" width="32" height="32" alt="" class="d-inline-block align-top">
-        Liga de FUTSAL</a>
+        <img src="../../../assets/logoFutsal32x32.png" width="32" height="32" alt="" class="d-inline-block align-top"> Liga de FUTSAL</a>
     <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
         <span class="navbar-toggler-icon"></span>
       </button>
     <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
         <ul class="navbar-nav ">
+
+            <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left">
+                <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
+                    Seleccionar Torneo
+                  </a>
+                <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                    <a ngbDropdownItem style="cursor: pointer" *ngFor="let torneo of torneos" (click)="buscarCategorias(torneo.anio,torneo.tipo)">{{torneo.anio}} {{torneo.tipo}} {{torneo.nombre}}</a>
+                </div>
+            </li>
+
             <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left">
                 <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
                     Categorias
                   </a>
-                    <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu" >
-                    <a ngbDropdownItem   style="cursor: pointer" *ngFor="let categoria of categorias" (click)="$event.preventDefault()" routerLink="estadisticas/{{categoria.cat_id}}">{{categoria.cat_descripcion}}</a>
+                <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                    <a ngbDropdownItem style="cursor: pointer" *ngFor="let categoria of categorias" (click)="$event.preventDefault()" routerLink="estadisticas/{{categoria.id_categoria}}">{{categoria.tipo}} {{categoria.nombre}}</a>
                 </div>
             </li>
 
@@ -20,21 +29,21 @@
                 <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
                     Administracion
                   </a>
-                    <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu" >
-                    <a ngbDropdownItem   style="cursor: pointer"  (click)="$event.preventDefault()">Categorias</a>
-                    <a ngbDropdownItem   style="cursor: pointer"  (click)="$event.preventDefault()">Equipos</a>
-                    <a ngbDropdownItem   style="cursor: pointer"  (click)="$event.preventDefault()">Fixture</a>
+                <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                    <a ngbDropdownItem style="cursor: pointer" (click)="$event.preventDefault()">Categorias</a>
+                    <a ngbDropdownItem style="cursor: pointer" (click)="$event.preventDefault()">Equipos</a>
+                    <a ngbDropdownItem style="cursor: pointer" (click)="$event.preventDefault()">Fixture</a>
                 </div>
             </li>
-           
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <button type="button" *ngIf="!esAdmin()" class="btn btn-outline-primary mr-0" (click)="Loguearse()">Ingresar</button>
-            <button type="button" *ngIf="esAdmin()" class="btn btn-outline-danger mr-0" (click)="SalirAdmin()">Salir</button>    
+            <button type="button" *ngIf="esAdmin()" class="btn btn-outline-danger mr-0" (click)="SalirAdmin()">Salir</button>
         </form>
 
     </div>
-    
+
 
     <!--  <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
