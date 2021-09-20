@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProvidersService } from 'src/app/services/providers.service';
 import { IPosicion } from 'src/app/models/posicion.interface';
 import { ICategoria } from '../../../models/categoria.interface';
 import { PosicionesService } from '../../../services/tablas/posiciones.service';
@@ -14,8 +13,7 @@ export class PosicionesComponent implements OnInit {
 
   @Input() categoria: ICategoria;
   posiciones: IPosicion[];
-  //constructor(private provService: ProvidersService) {
-  //}
+  
   constructor(private posServ: PosicionesService, private catServ: CategoriaService){
   }
   // CUANDO CAMBIA LA RUTA DEL COMPONENTE PADRE, SE ACTUALIZA EL PARAMETRO DE ENTRADA

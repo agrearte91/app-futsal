@@ -1,6 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProvidersService } from 'src/app/services/providers.service';
+//interfaces
 import { IGoleador } from 'src/app/models/goleador.interface';
+import { ICategoria } from '../../../models/categoria.interface';
+//servicios
+import { ProvidersService } from 'src/app/services/providers.service';
+import { CategoriaService } from '../../../services/categoria.service';
+import { PersonaService } from '../../../services/persona.service';
 
 @Component({
   selector: 'app-goleadores',
@@ -9,33 +14,44 @@ import { IGoleador } from 'src/app/models/goleador.interface';
 })
 export class GoleadoresComponent implements OnInit {
 
-  @Input() categoria: string;
-  goleadores: IGoleador[];
+  @Input() categoria: ICategoria;
+  goleadores: IGoleador[] = [];
 
-  constructor(private provService: ProvidersService) { }
+  constructor(private catServ:CategoriaService,private perServ:PersonaService, private provService: ProvidersService) { }
 
   // tslint:disable-next-line: use-life-cycle-interface
   ngOnChanges(changes) {
-    if (this.categoria !== undefined) {
-      this.goleadores = this.provService.getGoleadores(this.categoria);
-
-      // Ordena el arreglo por puntos
-      if (this.goleadores !== undefined) {
-        this.goleadores.sort((a, b) => b.gol_goles - a.gol_goles);
-      }
-
-    }
+    this.catServ.getGoleadores(this.categoria)
+    .subscribe(
+      goleadores => {
+        this.goleadores = []
+        goleadores.forEach(jugador => {
+          this.perServ.getPersona(jugador.dni_jugador)
+          .subscribe(
+            persona => {
+              this.goleadores.push({'nombre_jugador':`${persona.nombre} ${persona.apellido}`, goles: jugador.goles});
+            }
+          )
+        })
+        console.log(this.goleadores);
+      } 
+    )
   }
 
-
   ngOnInit() {
-    if (this.categoria !== undefined) {
-      this.goleadores = this.provService.getGoleadores(this.categoria);
-
-      // Ordena el arreglo por puntos
-      if (this.goleadores !== undefined) {
-        this.goleadores.sort((a, b) => b.gol_goles - a.gol_goles);
-      }
-    }
+    // this.catServ.getGoleadores(this.categoria)
+    // .subscribe(
+    //   goleadores => {
+    //     goleadores.forEach(jugador => {
+    //       this.perServ.getPersona(jugador.dni_jugador)
+    //       .subscribe(
+    //         persona => {
+    //           this.goleadores.push({'nombre_jugador':`${persona.nombre} ${persona.apellido}`, goles: jugador.goles});
+    //         }
+    //       )
+    //     })
+    //     console.log(this.goleadores);
+    //   } 
+    // )
   }
 }

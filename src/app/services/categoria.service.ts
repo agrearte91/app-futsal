@@ -35,4 +35,9 @@ getPartidos(idCategoria){
    map(data => data['data']))
 }
 
+getGoleadores(idCategoria){
+  return this.http.get(`http://localhost:4000/api/categoria/${idCategoria}/goleadores`)
+ .pipe(
+   map(data => data['data']))
+}
 }

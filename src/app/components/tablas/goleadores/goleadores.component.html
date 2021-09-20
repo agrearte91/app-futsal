@@ -14,11 +14,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let gole of goleadores; let i=index">
+                <tr *ngFor="let jugador of goleadores; let i=index">
                     <th scope="row"> {{i+1}}</th>
-                    <td>{{gole.gol_Jugador}}</td>
-                    <td>{{gole.gol_Equipo}}</td>
-                    <td>{{gole.gol_goles}}</td>
+                    <td>{{jugador.nombre_jugador}}</td>
+                    <td>consulta pendiente</td>
+                    <td>{{jugador.goles}}</td>
                 </tr>
             </tbody>
         </table>

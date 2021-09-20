@@ -28,8 +28,8 @@ export function dniUnico(control: FormControl): {[s: string]: boolean} {
 
 //Valido que el delegado y el subdelagado no sean la misma persona
 export function noigual( control: FormControl): {[s:string]:boolean}{
-  console.log('estoy dentro de la validacion noigual')
-  console.log(this.controls['dni'].value)
+  //console.log('estoy dentro de la validacion noigual')
+  //console.log(this.controls['dni'].value)
   let dni = control.value
   if(dni && dni === this.controls['dni'].value){
     return{

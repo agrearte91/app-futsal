@@ -8,7 +8,10 @@
 
         <div class="form-group form-row" [ngClass]="{'was-validated': nombreEquipo().valid}">
             <div class="col">
-                <input type="text" class="form-control text-center" placeholder="Nombre del equipo" formControlName="nombreEquipo" [ngClass]="{'is-invalid': nombreEquipo().dirty && !nombreEquipo().valid}">
+                <input type="search" list="posiblesEquipos" class="form-control text-center" placeholder="Nombre del equipo" formControlName="nombreEquipo" [ngClass]="{'is-invalid': nombreEquipo().dirty && !nombreEquipo().valid}" (change)="guardarEquipo($event)">
+                <datalist id="posiblesEquipos">
+                    <option *ngFor="let equipo of equiposDisponibles" [value] = equipo.nombre></option>
+               </datalist>
                 <div class="invalid-feedback" *ngIf="nombreEquipo().errors?.required">
                     *Obligatorio
                 </div>

@@ -37,11 +37,11 @@ export class ResultadosComponent implements OnInit {
   }
 
   ngOnInit() {
-
     console.log(this.categoria)
     this.catServ.getPartidos(this.categoria)
     .subscribe(
       partidos =>{
+        this.tablahash = {}
         this.ordenarPartidosPorFecha(partidos)
         this.fechaActual = this.tablahash[this.nroFecha]
       } 

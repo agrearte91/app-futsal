@@ -20,7 +20,7 @@ export const ROUTES: Routes = [
     { path: 'fixture', component: FixtureComponent },
     { path: 'fixture/:categoria', component: FixtureComponent },
     { path: 'estadisticas/:categoria', component: EstadisticasComponent },
-    { path: 'inscripcion', component: PlanillaInscripcionComponent },
+    { path: 'inscripcion/:anioTorneo/:tipoTorneo', component: PlanillaInscripcionComponent },
     { path: 'home', component: HomeComponent },
 
     { path: 'administracion/cargar-fixture/:categoria', component: NuevoFixtureComponent },

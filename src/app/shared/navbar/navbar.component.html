@@ -9,20 +9,28 @@
 
             <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left">
                 <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
-                    Seleccionar Torneo
+                    {{nombreTorneo}}
                   </a>
                 <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-                    <a ngbDropdownItem style="cursor: pointer" *ngFor="let torneo of torneos" (click)="buscarCategorias(torneo.anio,torneo.tipo)">{{torneo.anio}} {{torneo.tipo}} {{torneo.nombre}}</a>
+                    <a ngbDropdownItem style="cursor: pointer" *ngFor="let torneo of torneos" (click)="buscarCategorias(torneo);">
+                        {{torneo.anio}} {{torneo.tipo}} {{torneo.nombre}}
+                    </a>
                 </div>
             </li>
 
             <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left">
                 <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
-                    Categorias
+                    {{nombreCategoria}}
                   </a>
                 <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-                    <a ngbDropdownItem style="cursor: pointer" *ngFor="let categoria of categorias" (click)="$event.preventDefault()" routerLink="estadisticas/{{categoria.id_categoria}}">{{categoria.tipo}} {{categoria.nombre}}</a>
+                    <a ngbDropdownItem style="cursor: pointer" *ngFor="let categoria of categorias" (click)="$event.preventDefault(); nombreCategoria=''; nombreCategoria=nombreCategoria.concat(categoria.tipo,' ',categoria.nombre) " routerLink="estadisticas/{{categoria.id_categoria}}">
+                        {{categoria.tipo}} {{categoria.nombre}}
+                    </a>
                 </div>
+            </li>
+
+            <li class="nav-item" *ngIf="inscripcion">
+                <a class="nav-link" routerLink="inscripcion/{{anioTorneo}}/{{tipoTorneo}}">Inscripcion</a>
             </li>
 
             <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-left" *ngIf="esAdmin()">
@@ -37,10 +45,10 @@
             </li>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="col my-2 my-lg-0 align-self-end">
             <button type="button" *ngIf="!esAdmin()" class="btn btn-outline-primary mr-0" (click)="Loguearse()">Ingresar</button>
             <button type="button" *ngIf="esAdmin()" class="btn btn-outline-danger mr-0" (click)="SalirAdmin()">Salir</button>
-        </form>
+        </div>
 
     </div>
 

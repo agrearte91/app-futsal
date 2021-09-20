@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //import { IPosicion } from '../models/posicion.interface';
 //import { CATEGORIAS } from '../models/categoria.interface';
 //import { FECHASA } from '../models/fecha.interface';
-import { GOLEADORESA } from '../models/goleador.interface';
+//import { GOLEADORESA } from '../models/goleador.interface';
 import { FAIRA } from '../models/fairplay.interface';
 
 @Injectable({
@@ -28,7 +28,7 @@ export class ProvidersService {
 
   getGoleadores(categoria: string) {
     if (categoria === 'A') {
-      return GOLEADORESA;
+      return 1 //GOLEADORESA;
     } else {
       return undefined;
     }
